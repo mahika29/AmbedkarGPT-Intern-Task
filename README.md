@@ -1,121 +1,119 @@
 🚀 AmbedkarGPT — Local RAG QA System (Intern Task)
 
-A fully local Retrieval-Augmented Generation pipeline for querying Dr. B.R. Ambedkar’s speech.
+AmbedkarGPT is a fully local command-line QA system demonstrating a modern Retrieval-Augmented Generation (RAG) pipeline for asking intelligent questions about a speech by Dr. B. R. Ambedkar.
+
+Runs 100% offline, using only free and local tools.
 
 ✨ Overview
 
-AmbedkarGPT is a command-line intelligent QA system built entirely with local, offline tools.
-It demonstrates a modern RAG (Retrieval-Augmented Generation) workflow using:
+AmbedkarGPT uses:
 
-🧠 Local LLM: Mistral 7B via Ollama
+🧠 Local LLM (Mistral 7B) via Ollama
 
-🔎 ChromaDB: High-performance vector database
+🔎 ChromaDB for vector search
 
-📦 LangChain: Modular RAG pipeline framework
+🤗 HuggingFace MiniLM Embeddings
 
-🤗 HuggingFace MiniLM: Lightweight, accurate embedding model
+📦 LangChain for the pipeline
 
-All components run 100% locally, with no paid APIs, no tokens, and no internet needed after setup.
+📝 speech.txt as the knowledge base
 
-🔥 Key Features
+No API keys, no cloud calls, no paid services.
 
-⚙️ Full Local RAG Pipeline
-End-to-end question answering over the provided speech text.
+🔥 Features
 
-🧩 Efficient Text Splitting & Embedding
-Uses MiniLM embeddings for high-quality semantic search.
+Full RAG workflow (chunk → embed → store → retrieve → answer)
 
-🗂️ Chroma Vector Store
-Stores and retrieves text chunks with fast cosine similarity search.
+Local, private inference with Mistral
 
-🤖 Private Local LLM (Mistral 7B)
-via Ollama, ensuring fast and fully offline inference.
+Fast semantic search using ChromaDB
 
-🛑 Zero Cloud Dependency
-No OpenAI, no HuggingFace API, no accounts required.
+Simple CLI for querying Ambedkar's speech
 
-🏗️ Architecture
-┌─────────────┐        ┌────────────────┐        ┌────────────┐
-│ speech.txt  │ ──→ [ Text Splitter ] ──→ │ Embedding DB  │ ──→ [ Retriever ] ──→ [ LLM QA ]
-└─────────────┘        └────────────────┘        └────────────┘
-                                      ↑
-                                      │
-                     └────── User Questions & Answers ───────┘
+🏗 Architecture Diagram
+┌───────────────┐      ┌────────────────┐      ┌───────────────┐
+│   speech.txt   │ ---> │ Text Splitter  │ ---> │ Embedding DB  │
+└───────────────┘      └────────────────┘      └───────────────┘
+                                                           │
+                                                           ▼
+                                                    ┌──────────────┐
+                                                    │  LLM (QA)     │
+                                                    └──────────────┘
+                                                           ▲
+                                      └────── User Questions ──────┘
 
 📥 Installation & Setup
-✅ Prerequisites
 
-Python 3.8+
+Follow these steps in order.
+(All code blocks include GitHub’s copy button, so you can copy easily.)
 
-Ollama installed → https://ollama.com/download
-
-Mistral LLM pulled locally:
-
-ollama pull mistral
-
-🧰 Setup Instructions
-1️⃣ Clone the Repository
+1️⃣ Clone Repository
 git clone https://github.com/mahika29/AmbedkarGPT-Intern-Task.git
 cd AmbedkarGPT-Intern-Task
 
-2️⃣ Create Virtual Environment
+2️⃣ Create and Activate Virtual Environment
 Windows:
 python -m venv venv
 .\venv\Scripts\activate
 
-Mac / Linux:
+macOS / Linux:
 python3 -m venv venv
 source venv/bin/activate
 
 3️⃣ Install Dependencies
 pip install -r requirements.txt
 
-4️⃣ Run the Application
+4️⃣ Install Mistral Model (via Ollama)
+
+Make sure Ollama is installed.
+
+ollama pull mistral
+
+5️⃣ Run the Application
 python main.py
 
 
-Start asking questions like:
+Now just ask questions like:
 
-“What does Ambedkar say is the remedy for caste?”
+"What does Ambedkar say about social reform?"
 
-“Why must belief in the shastras be challenged?”
+"Why must belief in the shastras be challenged?"
 
-🗂️ Project Structure
-AmbedkarGPT-Intern-Task/
-│
-├── main.py           # Main RAG pipeline logic
-├── speech.txt        # The source speech for QA
-├── requirements.txt  # Python dependencies
-└── README.md         # Project documentation
+"What is his remedy for caste?"
 
-💡 Example Queries
+🗂 Project Structure
+File / Folder	Description
+main.py	Core RAG pipeline & CLI loop
+speech.txt	Source document for Q&A
+requirements.txt	Python packages needed
+README.md	Full documentation
+💡 Example Questions
 
 Try asking:
 
-“What is Ambedkar’s view on caste as a social system?”
+“What does the speech say about caste discrimination?”
 
-“How does the speech define social reform?”
+“How does Ambedkar define real reform?”
 
-“Why is challenging scripture important according to Ambedkar?”
+“Why does Ambedkar reject scriptural authority?”
 
-🛠️ Troubleshooting
-Issue	Solution
-⏳ Slow answers	Local LLMs depend on CPU/GPU power
-❌ Ollama not recognized	Restart terminal; ensure Ollama is installed & running
-⚠️ LangChain warnings	Safe to ignore if the app works
-🧠 Mistral not found	Run: ollama pull mistral
-📜 Assignment Requirements – Verified
-
-✔️ Single-file command-line QA app
-✔️ Local RAG pipeline with LangChain + ChromaDB
-✔️ HuggingFace MiniLM embeddings
-✔️ Local LLM using Ollama/Mistral
-✔️ No APIs, no cloud, no paid services
-✔️ Clean and complete documentation
-
+🛠 Troubleshooting
+Issue	Fix
+❌ Ollama: command not found	Install Ollama & restart terminal
+🧠 Model not loading	Run ollama pull mistral
+🐌 Slow answers	Local inference depends on CPU/GPU power
+⚠️ LangChain deprecation warnings	Safe to ignore
+📜 Assignment Requirements (All Met ✔)
+Requirement	Status
+Single-file CLI app	✔
+Uses LangChain	✔
+Uses ChromaDB	✔
+Uses HuggingFace MiniLM	✔
+Uses local model via Ollama	✔
+No paid APIs	✔
 👤 Maintainer
 
-MAHIKA HARIKUMAR
+Mahika Harikumar
 📧 Email: mahikaharikumar29@gmail.com
 
-If you encounter issues or want to suggest improvements, feel free to open an issue.
+Feel free to open an issue for help or suggestions!
