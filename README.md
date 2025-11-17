@@ -1,88 +1,93 @@
-AmbedkarGPT-Intern-Task
+AmbedkarGPT Intern QA System
+📚 Project Summary
 Welcome!
-This repo contains the code and setup for my AI Intern RAG QA assignment (Kalpit Pvt Ltd).
-It’s designed to answer questions based only on the provided Ambedkar speech excerpt, all running locally and easily set up on any machine.
+AmbedkarGPT is a command-line QA app for answering questions about a classic Dr. B.R. Ambedkar speech, entirely offline.
+It's built for the Kalpit Pvt Ltd AI Intern assignment, and showcases a simple RAG (Retrieval-Augmented Generation) pipeline in Python using only free, local tools—no API keys or setup headaches.
 
-What does this do?
-Loads the provided speech.txt from Dr. B.R. Ambedkar.
+🚀 How It Works
+Loads the speech.txt excerpt.
 
-Splits the text into chunks for smarter searching.
+Splits the text into manageable chunks.
 
-Turns those chunks into vector embeddings (using HuggingFace).
+Creates meaningful embeddings using HuggingFace sentence-transformers.
 
-Stores the vectors locally using ChromaDB.
+Stores those embeddings locally in ChromaDB.
 
-Uses LangChain to retrieve relevant chunks and answer your questions with the Mistral 7B LLM running in Ollama.
+Finds the best context chunks for any question.
 
-No external APIs, no accounts, and no hidden costs.
+Uses the Mistral 7B LLM in Ollama to answer, always grounded in the original text.
 
-Quick Setup
-You’ll need:
+🗂️ Repo Structure
+main.py — All core logic (well-commented and readable)
 
-Python 3.8 or newer
+speech.txt — The QA source text (Ambedkar speech excerpt)
 
-Ollama (installed locally)
+requirements.txt — All dependencies for setup
 
-Mistral 7B model downloaded with Ollama
+README.md — That’s this file!
 
-Step 1. Clone this repo:
+⚙️ Quick Setup Guide
+1. Get Python & Ollama
+You’ll need Python 3.8+ (recommended: latest), and Ollama installed.
 
-bash
-git clone https://github.com/<your-username>/AmbedkarGPT-Intern-Task.git
-cd AmbedkarGPT-Intern-Task
-Step 2. Start a Python virtual environment:
-
-bash
-python -m venv venv
-# Activate:
-# On Windows:
-.\venv\Scripts\activate
-# On Mac/Linux:
-source venv/bin/activate
-Step 3. Install requirements:
-
-bash
-pip install -r requirements.txt
-Step 4. Make sure Ollama is installed and the Mistral model is pulled:
+2. Pull Mistral LLM
+Open a terminal and run:
 
 bash
 ollama pull mistral
-Step 5. Run the app:
+Start Ollama if not running (ollama run mistral should reply!).
+
+3. Clone & Install
+Clone the repo and enter its folder:
+
+bash
+git clone https://github.com/mahika29/AmbedkarGPT-Intern-Task.git
+cd AmbedkarGPT-Intern-Task
+Spin up a virtual Python environment:
+
+bash
+python -m venv venv
+# Windows:
+.\venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+Install all requirements:
+
+bash
+pip install -r requirements.txt
+4. Run the QA App
+Just:
 
 bash
 python main.py
-How to use
-Type any question about the provided speech excerpt at the prompt.
+Type any question about the speech!
 
-Example questions:
+💻 Example Usage
+text
+Ask a question (or type 'exit' to quit): What is Ambedkar’s remedy for caste?
+Answer: According to Ambedkar, the real remedy for caste is to destroy the belief in the sanctity of the shastras...
+Ask followups, or exit when you’re done.
 
-What is Ambedkar’s remedy for caste?
+💬 Common Issues & Tips
+Slow to answer?
+Local LLMs like Mistral take a few seconds per answer (your hardware matters).
 
-Why does Ambedkar challenge the shastras?
+Error about Ollama?
+Make sure you installed Ollama AND restarted your terminal so the command is found.
 
-What analogy is used for social reform?
+Deprecation or warning messages?
+Ignore these—the app works and meets the assignment brief.
 
-To exit, just type exit!
+🎯 Assignment Details
+All code, embeddings, and answering are strictly local.
 
-Troubleshooting
-It’s a little slow? Local LLM inference isn't instant, especially on normal laptops. No worries—it's expected!
+You never need an API key, login, or payment.
 
-Ollama not found? Double-check your PATH and restart the terminal after installing Ollama.
+Answers are based only on speech.txt content.
 
-Dependency warnings? You might see LangChain deprecation notes—ignore these, as the code still works and meets the assignment brief.
+🤝 Need help?
+Open an issue on GitHub, or contact by email (mahikaharikuamr29@gmail.com).
+Feedback is always welcome!
 
-What’s inside?
-main.py — Complete QA pipeline, with helpful comments so you can see what each part does.
-
-speech.txt — The actual text source (Ambedkar speech excerpt).
-
-requirements.txt — All Python libraries you’ll need.
-
-README.md — This guide.
-
-Assignment details
-Built as per the Kalpit Pvt Ltd AI Intern assignment brief.
-All processing runs locally, and answers are always grounded in the provided text.
-
-If you have any questions, drop me a message or an issue in the repo!
-Thanks for checking out the project — hope you enjoy testing it.
+Thanks for reviewing and testing AmbedkarGPT!
+Built for reproducibility, clarity, and easy code review.
