@@ -1,85 +1,97 @@
-AmbedkarGPT Intern QA System
-📚 Project Overview
-AmbedkarGPT lets you ask questions about a speech excerpt from Dr. B.R. Ambedkar and get answers using a Retrieval-Augmented Generation pipeline—everything local and free.
+**AmbedkarGPT Intern QA System
+🎯 Overview**
+AmbedkarGPT is a fully local, command-line AI that answers questions about a speech by Dr. B.R. Ambedkar.
+It demonstrates a simple but modern Retrieval-Augmented Generation (RAG) pipeline using 📦 LangChain, 🔎 ChromaDB, 🤗 HuggingFace, and 🦙 Ollama/Mistral—all 100% free, with no API keys or logins required.
 
-🚀 How It Works
-Loads the provided speech.txt excerpt
+**✨ Key Features**
+RAG Workflow: End-to-end retrieval augmented generation, all local.
 
-Splits the passage into manageable chunks
+ChromaDB Vector Store: Stores and retrieves semantic embeddings efficiently.
 
-Creates embeddings from each chunk using HuggingFace sentence-transformers
+HuggingFace MiniLM Embeddings: Transforms text for precise chunk-level search.
 
-Stores embeddings locally in ChromaDB
+Local LLM (Mistral 7B): Private LLM inference using Ollama.
 
-Finds best context chunks for your question
+Zero Cloud Dependency: No paid APIs, no accounts, no internet needed after setup.
 
-Uses the Mistral 7B LLM via Ollama for accurate, text-grounded answers
-
-🗂️ Repository Contents
-main.py – Main app logic, with comments
-
-requirements.txt – List of dependencies
-
-speech.txt – Source speech excerpt
-
-⚙️ Setup Guide
-1. Prerequisites
+**🏗️ Architecture**
+text
+┌─────────────┐        ┌──────────────┐        ┌─────────────┐
+│ speech.txt  │─→[splitter]─→│ Embedding DB │─→[retriever]─→│    LLM/QA    │
+└─────────────┘        └──────────────┘        └─────────────┘
+      ↑                                              │
+      └───────[user questions & answers]─────────────┘
+**🚀 Getting Started**
+Prerequisites
 Python 3.8+
 
-Ollama (installed locally)
+Ollama (https://ollama.com/download)
 
-Mistral 7B model downloaded
+Mistral LLM via Ollama (ollama pull mistral)
 
-2. Installation
+Installation
+Clone the repository:
+
 bash
 git clone https://github.com/mahika29/AmbedkarGPT-Intern-Task.git
 cd AmbedkarGPT-Intern-Task
-Create and activate your Python environment:
+Create and activate a virtual environment:
 
-Windows
+Windows:
 
 bash
 python -m venv venv
 .\venv\Scripts\activate
-Mac/Linux
+Mac/Linux:
 
 bash
 python3 -m venv venv
 source venv/bin/activate
-Install dependencies:
+Install Python dependencies:
 
 bash
 pip install -r requirements.txt
-Pull the Mistral model in Ollama:
+Make sure you have pulled the Mistral model:
 
 bash
 ollama pull mistral
-3. Running the App
+Running the Application
 bash
 python main.py
-You’ll see a prompt — just ask any question about the speech excerpt!
+Type your questions at the prompt and get answers directly from the Ambedkar speech provided.
 
-💡 Example Usage
+**📁 Project Structure**
 text
-Ask a question (or type 'exit' to quit): What does Ambedkar say is the remedy for caste?
-Answer: According to Ambedkar, the remedy is to destroy belief in the sanctity of the shastras...
-🛠️ Common Issues
-LLM answers are slow: Local inference takes a few seconds per question; depends on your PC.
+AmbedkarGPT-Intern-Task/
+├── main.py              # Main pipeline code
+├── requirements.txt     # Required Python packages
+├── speech.txt           # Source text being queried
+└── README.md            # This documentation
+**💡 Example Questions**
+What does Ambedkar say is the real remedy for caste?
 
-Ollama not found: Make sure it’s installed and in PATH; restart terminal if needed.
+Why must belief in the shastras be challenged?
 
-Warnings: You may see library deprecation warnings—ignore these, the code works.
+How does the passage describe “social reform”?
+**
+🛠️ Troubleshooting**
+Slow answers: Local LLM inference takes time. Performance depends on your hardware.
 
-🎯 Assignment Brief
-This project fulfills the Kalpit Pvt Ltd AI Intern requirements:
+Ollama issues: Ensure Ollama is installed, in PATH, and running (restart your terminal if needed).
 
-Retrieval-based answering from a provided text file
+Dependency warnings: LangChain deprecation notes can be ignored if the code runs.
 
-Uses LangChain, ChromaDB, HuggingFace, and local LLM (Mistral 7B) via Ollama
+**📜 Assignment Compliance**
+Single-file command-line QA app.
 
-No API keys or external services required
+NO API keys, accounts, or paid services.
 
-🤝 Need Help?
-Open an issue in the GitHub repo or contact me at mahikaharikumar29@gmail.com!
+Core pipeline: LangChain, ChromaDB, HuggingFace, and Ollama/Mistral only.
 
-Thanks for reviewing and testing AmbedkarGPT!
+All logic and requirements clearly documented for reviewers.
+
+**👤 Maintainer**
+MAHIKA HARIKUMAR 
+Email: mahikaharikumar29@gmail.com
+
+Open an issue if you need help or have suggestions!
