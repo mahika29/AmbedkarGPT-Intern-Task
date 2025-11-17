@@ -1,8 +1,10 @@
-AmbedkarGPT Intern QA System
-📚 Project Summary
-Welcome!
-AmbedkarGPT is a command-line QA app for answering questions about a classic Dr. B.R. Ambedkar speech, entirely offline.
-It's built for the Kalpit Pvt Ltd AI Intern assignment, and showcases a simple RAG (Retrieval-Augmented Generation) pipeline in Python using only free, local tools—no API keys or setup headaches.
+# AmbedkarGPT Intern QA System
+
+## 📚 Project Summary
+
+Welcome!  
+AmbedkarGPT is a command-line QA app answering questions about a classic Dr. B.R. Ambedkar speech, entirely offline. Built for the Kalpit Pvt Ltd AI Intern assignment, it showcases a simple RAG pipeline in Python.
+
 
 🚀 How It Works
 Loads the speech.txt excerpt.
